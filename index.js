@@ -70,8 +70,5 @@ app.post('/send', async (req, res) => {
   }
 });
 
-app.use('*', (req, res) => {
-  res.status(404).json({ error: 'الصفحة غير موجودة' });
-});
 
 module.exports = app;
