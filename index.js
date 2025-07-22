@@ -13,17 +13,17 @@ const serviceAccount = require('./firebase-service-account.json');
 // Initialize Firebase Admin
 admin.initializeApp({
   credential: admin.credential.cert({
-    "type": "service_account",
-    "project_id": "hala-sd",
-    "private_key_id": "5cd7408bbf1e77962a2f84e2071e2e7b834baca2",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqBOmRsU7mYnjJ\nWHQTXtpPPq5Quv5PSknt+x0rOrVXteQ3DJs2XS9rx5SddtNetuCl0m0bUnfwC1X0\nL4WuKPpeD6pcfLyWKH23YREsO3phNaJoX9DdIPij+f9p5BSrFgC7ZoguemEBh0Dk\no2txTwCBMQUAA3UBu1N3/yic+KT2Fgi+whyEFfz0mDf8Lhl5paYxD6QYloLvCtBv\nhNxyRAnea+Cedc1V/Yox9Vht80OSrS1lnr8hGPaofSAuxkyGEAlOFWkDDXO8tQRM\nIe8jzV02TzqEocVA2evuimTtFYTGO2pvluU4HVRS1c7WbL6REq4W+oIDUHHdnQhr\ns6Ihpv8XAgMBAAECggEAM6wWiK8IucBH0XnOnWyAkQEN3X9XdyWu3mMpdE/9eVDQ\nsWJlcdpUZT9dDZZlmy2djQgtHNatmQj48KPYzxupLBk6v60xa7mWq7sWiwjwosa4\nO1yTkAFLUBrU44vsNCsVwd7hmK6c+OfwcwyvxNor3xfU2zIxx3r1XUzxPPPcvuVo\nNmcLmmQN4elJLWBOrF6QELAM8YbjD8SmjzyQCCkh29qngSDgf50fbpiTfbqSYaIe\nScEK4KfKg6+oVm5qNM1h5jeVpg7D6mj2B2Po00RJL25fCfDiGX5TJJj6+PkRmiCk\n6ZQPnY4tFaxWerxySzUc5JzgQwnllI7DrMnN9p0xYQKBgQDiuXha6TeTm1zgiA+2\ntnG7zaA3wlY6YHJtiWQagwmMmlk0JTUzkv+C7Lea/J8a3bhCPe3jX11jGvPZTaGH\noXngCv8Wncx+bigtBOZi/UdW7FsQskSEVEB4tPWOhhOE8ut8CtbRJF7G3rxFe/o8\nLsAVo9kOsMqTIcdSW9TUPXEr7wKBgQC/+QKuSCCmmt5MwGs+iPBA3vlPyJ3X7urE\nlLReCLaYPm/Wm4nXEA/awJnrHgRKeyohNxI/f2Dl/y1099TyF9KcepDpn/w47DCn\n33yHJgVWao3MZ4IJmfN852zlmEjWA1o5yNw8dxkueVngCzYdNkwDfZHtEG6tA388\nOWQneCfXWQKBgQC957hl/Z6tpp6++3ieBGdzdSLUUZVERHDUSxZsFoIzIT3Crb/I\nOUKH+Zs42Iy0Ri8GXTUbFE/2qSbDR4EbSCf7f3p3CSm2ZLKGMup+08OjjUohzBAT\n/zYZZQmhnbBP1eFk/vc8Kwiv7vUoBlZtfoMqHRm8clzbrJl15LF6LRTURQKBgEGJ\nG54tp1/Y/MzM34+wpfwvYoMXJLODr4e+kDiN1u/wWLO103+kzxTJrYHzdFmM5FwE\ndelRbd32mCkXNg4TjeW3feMTp8Iy94VHqTZmB2px48iFCYKHmPTp+GYE79CHwnR5\nmp3VtrYD3We7zBR65cZHRtrcQjw0Nmpz2ToULd25AoGAHvktOf2AhHruqBqSdHKo\nIl3z9Z2ylGGIfG/FGsQOSy2jSUB0c1+eiwJaRGAAe23WS5QkFKND7TitnaiBcKrT\naN7ZI8kBketjdBewj2ef0hr+iT0xDo2k+Lp5AdhVoCoKWUtOER80BD2d3zayjCvI\narwhy2i9CZWsFCWK1z7zRtk=\n-----END PRIVATE KEY-----\n",
-    "client_email": "firebase-adminsdk-fbsvc@hala-sd.iam.gserviceaccount.com",
-    "client_id": "100672264719992762524",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40hala-sd.iam.gserviceaccount.com",
-    "universe_domain": "googleapis.com"
+    type: process.env.FIREBASE_TYPE,
+    project_id: process.env.FIREBASE_PROJECT_ID,
+    private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+    private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    client_email: process.env.FIREBASE_CLIENT_EMAIL,
+    client_id: process.env.FIREBASE_CLIENT_ID,
+    auth_uri: process.env.FIREBASE_AUTH_URI,
+    token_uri: process.env.FIREBASE_TOKEN_URI,
+    auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_CERT_URL,
+    client_x509_cert_url: process.env.FIREBASE_CLIENT_CERT_URL,
+    universe_domain: process.env.FIREBASE_UNIVERSE_DOMAIN
   })
 });
 
