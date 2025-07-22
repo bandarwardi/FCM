@@ -15,6 +15,10 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
+app.get('/', (req, res) => {
+  res.send('🎉 مرحبًا بك في واجهة الإشعارات - FCM');
+});
+
 // === API endpoint to subscribe a token to a topic ===
 app.post('/subscribe', async (req, res) => {
   const { token, topic } = req.body;
