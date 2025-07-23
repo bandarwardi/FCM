@@ -64,7 +64,7 @@ app.post('/send', async (req, res) => {
   };
 
   if(img){
-    message.imageUrl = img;
+    message.notification.imageUrl = img;
   }
 
   if (token) {
