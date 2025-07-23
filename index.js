@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(cors()); 
 
 // Path to service account key JSON
-const serviceAccount = require('./firebase-service-account.json');
+// const serviceAccount = require('./firebase-service-account.json');
 
 // Initialize Firebase Admin
 admin.initializeApp({
   credential: admin.credential.cert({
-    type: process.env.FIREBASE_TYPE,
+    type: "service_account",
     project_id: process.env.FIREBASE_PROJECT_ID,
     private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
     private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
@@ -24,7 +24,7 @@ admin.initializeApp({
     token_uri: process.env.FIREBASE_TOKEN_URI,
     auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_CERT_URL,
     client_x509_cert_url: process.env.FIREBASE_CLIENT_CERT_URL,
-    universe_domain: process.env.FIREBASE_UNIVERSE_DOMAIN
+    universe_domain: "googleapis.com"
   })
 });
 
